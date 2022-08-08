@@ -1,33 +1,56 @@
-// ℹ️ Gets access to environment variables/settings
-// https://www.npmjs.com/package/dotenv
-require('dotenv/config');
+require ("dotenv").config();
+const express = require("express");
+const logger = require( "morgan" );
+const hbs = require("hbs");
+const sessionConfig = require("./config/session.config");
 
-// ℹ️ Connects to the database
-require('./db');
+require("./config/db.config");
 
-// Handles http requests (express is node js framework)
-// https://www.npmjs.com/package/express
-const express = require('express');
+const app =express();
+// Handles access to the public folder
+app.use(express.static("public"));
+// To have access to `body` property in the request
+app.use(express.urlencoded({extended: false}));
+// In development environment the app logs
+app.use(logger("dev"));
 
-// Handles the handlebars
-// https://www.npmjs.com/package/hbs
-const hbs = require('hbs');
-const app = express();
+//app.use(sessionConfig);
 
-// ℹ️ This function is getting exported from the config folder. It runs most middlewares
-require('./config')(app);
+ // Normalizes the path to the views folder
+app.set("views", __dirname + "/views");
+// Sets the view engine to handlebars
+app.set("view engine", "hbs");
 
-// default value for title local
-const projectName = 'lab-movies-celebrities';
-const capitalized = string => string[0].toUpperCase() + string.slice(1).toLowerCase();
+hbs.registerPartials(__dirname + "/views/partials");
+// app.use((req, res, next) => {
+//   res.locals.currentUser= req.session.currentUser;
+//   next;
+// });
 
-app.locals.title = `${capitalized(projectName)}- Generated with Ironlauncher`;
+const routes =require("./config/routes.config");
+app.use(routes);
 
-// 👇 Start handling routes here
-const index = require('./routes/index');
-app.use('/', index);
+app.use((req, res, next) => {
+  // this middleware runs whenever requested page is not available
+  res.status(404).render("not-found");
+});
 
-// ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
-require('./error-handling')(app);
+app.use((err, req, res, next) => {
+  // whenever you call next(err), this middleware will handle the error
+  // always logs the error
+  console.error("ERROR", req.method, req.path, err);
 
-module.exports = app;
+  // only render if the error ocurred before sending the response
+  if (!res.headersSent) {
+    res.status(500).render("error");
+  }
+});
+
+app.use((err, req, res, next) => {
+  res.render("error", {err});
+});
+
+
+
+app.listen(3000, () => console.log("Listening on port 3000"));
+

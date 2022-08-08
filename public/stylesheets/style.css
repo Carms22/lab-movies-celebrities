@@ -1,8 +1,79 @@
+
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  text-align: center;
+  font-family: 'FuturaRennerRegular';
+  font-weight: normal;
+  font-style: normal;
+}
+nav {
+  background-color: lightsteelblue;
+  z-index: 1;
+}
+#color-a{
+  font-size: 1.2em;
+  color: rgb(76, 24, 124);
+}
+h1{
+  font-size: 4.5em;
+}
+.page{
+  position: fixed;
+}
+.page img{
+  position: absolute;
+  top: -100;
+  left: 0;
+  margin: 0;
+  min-width: 50%;
+  min-height: 50%;
+  z-index: -1;
+}
+a{
+  color: black;
+}
+.center-search{
+  margin: 50px 0 0 350px;
+  position: absolute;
+  text-align: center;
+}
+.image {
+  top: -100px;
+  width: 1300px;
+  height: 650px;
+  z-index: -1;
+}
+.center-search > h1, a, div{
+  color: rgb(33, 6, 48);
+  width: 550px;
 }
 
-a {
-  color: #00b7ff;
+.button-home{
+  font-size: 1.5em;
+  margin: 25px;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(20px);
+  border-radius: 10px;
+  color: blueviolet;
+}
+
+.profile-card{
+  background-color: rgba(32, 2, 65, 0.5);
+  width: 450px;
+  height: 300px;
+  margin: 150px 0 0 400px;
+  text-align: center;
+
+}
+.transparent{
+  opacity: 0.6;
+  -moz-opacity: 0.6;
+  filter: alpha(opacity=60);
+  -khtml-opacity: 0.6;
+}
+
+.profile-card img{
+  position: relative;
+  margin: 10px 0 0 20px;
+  text-align: center;
+  z-index: 1;
 }
