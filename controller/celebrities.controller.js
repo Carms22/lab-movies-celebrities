@@ -24,7 +24,7 @@ module.exports.celebritiesDetail = (req, res, next) => {
       res.render("celebrities/detail", { celebrity })
     })
     .catch(err => {
-      next(createError(404, "Author not found"))
+      next(createError(404, "celebrity not found"))
     })
 }
 
@@ -33,9 +33,17 @@ module.exports.create = (req, res, next) => {
 }
 
 module.exports.doCreate = (req, res, next) => {
-  Celebrity.create(req.body)
+  const celebrity = req.body;
+  
+  Celebrity.create(celebrity)
     .then((createdCelebrity) => {
       res.redirect("/celebrities")
     })
-    .catch( err => next(err))
+    .catch( err =>{
+      res.render("celebrities/form", {
+        celebrity,
+        errors: err.errors
+      })
+      next(err)
+    })
 }

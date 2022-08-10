@@ -3,10 +3,12 @@ const mongoose = require ("mongoose");
 const celebritySchema = new mongoose.Schema(
   {
     name:{
-      type:String 
+      type:String,
+      required: [true, "Name is required"]
     },
     occupation:{
-      type:String
+      type:String,
+      required: [true, "Occupation is required"]
     },
     catchPhrase:{
       type: String

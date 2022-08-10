@@ -1,19 +1,22 @@
 <div class="page">
-<img src="/images/register.jpg" alt="register" class="image">
-<form class= "center-search" action="/celebrities" method="POST">
-<h2>Add new celebrity</h2>
-  <div class="mb-3 transparent">
-    <label for="name" class="form-label">Name</label>
-    <input type="text" class="form-control" id="name" name="name" required>
-  </div>
-  <div class="mb-3 transparent">
-    <label for="occupation" class="form-label">occupation</label>
-    <input type="text" class="form-control" id="occupation" name="occupation" required>
-  </div>
-  <div class="mb-3 transparent">
-    <label for="catchPhrase" class="form-label">catchPhrase</label>
-    <input type="text" class="form-control" id="catchPhrase" name="catchPhrase">
-  </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+  <img src="/images/register.jpg" alt="register" class="image">
+  <form class="search-c" action="/celebrities" method="POST">
+    <h2>Add new celebrity</h2>
+    <div class="mb-3 transparent width-550">
+      <input type="text" name="name"
+        class="custom-form-control form-control py-2 ps-4 {{#if errors.name}}is-invalid{{/if}}" placeholder="Name"
+        aria-label="Celebrity name" value="{{ celebrity.name }}">
+      {{#if errors.name}}<div class="invalid-feedback">{{ errors.name }}</div>{{/if}}
+    </div>
+    <div class="mb-3 transparent width-550">
+      <input type="text" class="custom-form-control form-control py-2 ps-4 {{#if errors.occupation}}is-invalid{{/if}}"
+        name="occupation" placeholder="Occupation" aria-label="Celebrity Occupation" value="{{ celebrity.occupation }}">
+      {{#if errors.occupation}}<div class="invalid-feedback">{{ errors.occupation }}</div>{{/if}}
+    </div>
+    <div class="mb-3 transparent width-550">
+      <input type="text" name="catchPhrase" class="form-control" placeholder="CatchPhrase"
+      aria-label="Celebrity CatchPhrase" value="{{ celebrity.catchPhrase }}">
+    </div>
+    <button type="submit" class="btn transparent">Submit</button>
+  </form>
 </div>
