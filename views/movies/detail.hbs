@@ -1,0 +1,22 @@
+<div class="">
+   <img src="/images/movies/detail.jpg" alt="list" class="image-2 page">
+   <div class="center">
+  <h2>Movie: {{movie.title}}</h2>
+  <h3>Genre: {{movie.genre}}</h3>
+  <h3>Plot: {{movie.plot}}</h3>
+  <h3>Cast: </h3>
+     <ul>
+       {{#each movie.cast}}
+          <li>{{this.name}}</li>
+          <li>{{this.occupation }}</li>
+          <li>{{this.catchPhrase}}</li>
+       {{/each}}
+     </ul>
+     <form action="/movies/{{movie._id}}/delete" method="POST">
+      <button type="submit" class="transparent">Delete</button>
+     </form>
+     <form action="/movies/{{movie._id}}/edit" method="GET">
+      <button type="submit" class="transparent">Edit</button>
+     </form>
+  </div>
+</div>

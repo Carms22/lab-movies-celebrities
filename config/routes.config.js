@@ -8,10 +8,16 @@ router.get("/", (req, res, next) => {
 });
 
 //MOVIES
-// router.get("/movies/new", moviesController.create);
-// router.post("/movies", moviesController.doCreate);
-// router.get("/movies", moviesController.list);
-// router.post("/movies/:id", moviesController.movieDetail);
+router.get("/movies/new", moviesController.create);
+router.post("/movies", moviesController.doCreate);
+router.get("/movies", moviesController.list);
+router.get("/movies/:id", moviesController.moviesDetail);
+
+router.get("/movies/:id/edit", moviesController.edit);
+router.post("/movies/:id", moviesController.doEdit);
+
+router.post("/movies/:id/delete", moviesController.delete);
+
 
 //CELEBRITIES
 router.get("/celebrities/new", celebritiesController.create);

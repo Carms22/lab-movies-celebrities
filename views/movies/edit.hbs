@@ -1,0 +1,29 @@
+<div class="" style="color: white;">
+  <img src="/images/movies/edit.jpg" alt="list" class="image-2 page">
+  <div class="center">
+    <h2>Editing movie</h2>
+    <form class="" action="/movies/{{movie.id}}" method="POST">
+      <div class="mb-3 transparent width-550">
+        <input type="text" name="title" class="custom-form-control form-control py-2 ps-4" placeholder="Title"
+          aria-label="Movie title" value="{{ movie.title }}">
+      </div>
+      <div class="mb-3 transparent width-550">
+        <input type="text" name="genre" class="form-control" placeholder="Genre" aria-label="Movie genre"
+          value="{{ movie.genre }}">
+      </div>
+      <div class="mb-3 transparent width-550">
+        <input type="text" name="plot" class="form-control" placeholder="Plot" aria-label="Movie plot"
+          value="{{ movie.plot }}">
+      </div>
+      <label for="cast">Select celebrities:</label>
+      <div class="mb-3 transparent width-550">
+        <select name="cast" multiple>
+          {{#each celebrities as |celebrity|}}
+          <option value="{{celebrity._id}}">{{celebrity.name}}</option>
+          {{/each}}
+        </select>
+      </div>
+      <button type="submit" class="transparent">Submit</button>
+  </div>
+  </form>
+</div>

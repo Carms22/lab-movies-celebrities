@@ -1,1 +1,24 @@
-movies list
+<div style="color: rgb(255, 255, 255);">
+  <img src="/images/movies/list.jpg" alt="list" class="image-2 page">
+  <h1>Movies we got:</h1>
+  <div class="flex-cards">
+    {{#each movies as |movie|}}
+      <div class="transparent center-card">
+        <h2>{{movie.title}}</h3>
+        <h3>{{movie.genre}}</h4>
+        <p>{{movie.plot}}</p>
+        <div>
+          <h5>Cast:</h5>
+          <ul>
+            {{#each movie.cast}}
+                <li>{{this.name}}</li>
+            {{/each}}
+          </ul>
+        </div>
+        <button>
+         <a href="/movies/{{this._id}}" class="  transparent">See more</a>
+        </button>
+      </div>
+    {{/each}}
+  </div>
+</div>

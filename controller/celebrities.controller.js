@@ -4,7 +4,6 @@ const Celebrity = require("../models/Celebrity.model");
 //READ
 module.exports.list = (req, res, next) =>{
   Celebrity.find()
-    //.populate("movies")
     .then((celebrities) => {
       res.render("celebrities/list", {celebrities})
     })
@@ -14,12 +13,6 @@ module.exports.list = (req, res, next) =>{
 module.exports.celebritiesDetail = (req, res, next) => {
   const {id} = req.params;
   Celebrity.findById(id)
-    // .populate({
-    //   path: "movies",
-    //   populate: {
-    //     path:"celebrity",
-    //   }
-    // })
     .then((celebrity) => {
       res.render("celebrities/detail", { celebrity })
     })

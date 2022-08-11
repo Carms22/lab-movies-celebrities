@@ -6,8 +6,11 @@ body {
   font-style: normal;
 }
 nav {
-  background-color: lightsteelblue;
+  background-color: lightgray;
   z-index: 1;
+}
+ul, li {
+  list-style-type: none;
 }
 label{
   font-size: 1.5em;
@@ -44,7 +47,12 @@ h1{
   z-index: -1;
 }
 a{
-  color: black;
+  color: rgb(31, 30, 30);
+}
+.center{
+  margin: 100px 0 0 350px;
+  position: absolute;
+  text-align: center;
 }
 .search-c{
   margin: 50px 0 0 350px;
@@ -76,7 +84,7 @@ a{
 }
 
 .width-550 {
-  color: rgb(33, 6, 48);
+  color: rgb(243, 238, 246);
   width: 550px;
 }
 
@@ -121,18 +129,18 @@ button {
   font-size: 18px;
   letter-spacing: 1px;
   text-decoration: none;
-  color: #725AC1;
+  color: #38373c;
   background: transparent;
   cursor: pointer;
   transition: ease-out 0.5s;
-  border: 2px solid #725AC1;
+  border: 2px solid #38373c;
   border-radius: 10px;
-  box-shadow: inset 0 0 0 0 #725AC1;
+  box-shadow: inset 0 0 0 0 #38373c;
 }
 
 button:hover {
   color: white;
-  box-shadow: inset 0 -100px 0 0 #725AC1;
+  box-shadow: inset 0 -100px 0 0 #38373c;
 }
 
 button:active {
