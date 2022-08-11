@@ -21,6 +21,7 @@ module.exports.celebritiesDetail = (req, res, next) => {
     })
 }
 
+//create
 module.exports.create = (req, res, next) => {
   res.render("celebrities/form")
 }
@@ -39,4 +40,31 @@ module.exports.doCreate = (req, res, next) => {
       })
       next(err)
     })
+}
+module.exports.edit = (req, res, next) => {
+  const { id } = req.params;
+  Celebrity.findById(id)
+    .then( (celebrity) => {
+      res.render("celebrities/edit", { celebrity })
+    })
+    .catch(next)
+}
+
+module.exports.doEdit = (req, res, next) => {
+  const { id } = req.params;
+  Celebrity.findByIdAndUpdate( id,req.body, { new: true} )
+    .then( (celebrity) => {
+      res.redirect(`/celebrities/${celebrity.id}`)
+    })
+    .catch(next)
+}
+
+//Delete
+module.exports.delete = (req, res, next) => {
+  const { id } = req.params;
+  Celebrity.findByIdAndDelete(id)
+    .then( () => {
+      res.redirect("/celebrities")
+    })
+    .catch(next)
 }

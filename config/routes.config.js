@@ -26,7 +26,10 @@ router.post("/celebrities", celebritiesController.doCreate);
 router.get("/celebrities", celebritiesController.list);
 router.get("/celebrities/:id", celebritiesController.celebritiesDetail);
 
+router.get("/celebrities/:id/edit", celebritiesController.edit);
+router.post("/celebrities/:id", celebritiesController.doEdit);
 
+router.post("/celebrities/:id/delete", celebritiesController.delete);
 
 
 module.exports = router;

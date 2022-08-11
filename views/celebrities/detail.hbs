@@ -1,1 +1,14 @@
-details of celebrity
+<div class="">
+   <img src="/images/detail.jpg" alt="list" class="image-2 page">
+   <div class="center">
+  <h2>Celebrity: {{celebrity.name}}</h2>
+  <h3>occupation: {{celebrity.occupation}}</h3>
+  <h3>catchPhrase: {{celebrity.catchPhrase}}</h3>
+     <form action="/celebrities/{{celebrity._id}}/delete" method="POST">
+      <button type="submit" class="transparent">Delete</button>
+     </form>
+     <form action="/celebrities/{{celebrity._id}}/edit" method="GET">
+      <button type="submit" class="transparent">Edit</button>
+     </form>
+  </div>
+</div>
